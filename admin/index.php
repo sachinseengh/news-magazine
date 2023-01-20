@@ -1,9 +1,34 @@
 <?php
-
+@session_start();
+if(array_key_exists('username',$_SESSION) && array_key_exists('username',$_COOKIE)){
+    header('location:newsmagazine/dashboard.php');
+}
 include('class/user.class.php');
 
 $userObject=new User( );
-print_r($userObject);
+
+$error=[ ];
+
+if(isset($_POST['submit'])){
+    if(isset($_POST['email']) && !empty($_POST['email'])){
+        $userObject->email=$_POST['email'];
+    }else{
+        $error['email']="Email not entered";
+    }
+
+    if(isset($_POST['password']) && !empty($_POST['password'])){
+        $userObject->password=$_POST['password'];
+    }else{
+        $error['password']="Password not entered";
+    }
+}
+
+
+if(count($error)<1){
+     $status= $userObject->login( );
+}
+
+
 
 
 ?>
@@ -67,15 +92,35 @@ print_r($userObject);
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
+                        <?php
+if(isset($status)){
+    echo"<small style='color:red'>$status</small>";
+}
+?>
                         <form action="" id="LoginForm" method="post" novalidate>
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email"
                                         autofocus required>
+                                        <small style="color:red">
+                                            <?php
+                                            if(isset($erroremail)){
+                                                echo $erroremail;
+                                            }
+                                            ?>
+                                        </small>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password"
                                         value="" required>
+                                        <small style="color:red;">
+                                            <?php
+                                            if(isset($errorpassword
+                                            )){
+                                                echo $errorpassword;
+                                            }
+                                            ?>
+                                        </small>
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -83,7 +128,7 @@ print_r($userObject);
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" name="submit">
                             </fieldset>
                         </form>
                     </div>
@@ -93,14 +138,14 @@ print_r($userObject);
     </div>
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="vendor/jquery/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
     <script>
         $(document).ready(function(){
             $('#LoginForm').validate();
         })
-    </script>
+    </script> -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
