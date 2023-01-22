@@ -19,10 +19,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">News Management</a>
+                                    <a href="createCategory.php">Create Category</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="listCategory.php">List Category</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

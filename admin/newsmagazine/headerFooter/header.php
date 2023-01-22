@@ -1,4 +1,17 @@
+<?php
+@session_start( );
+
+if(!array_key_exists('username',$_SESSION) && array_key_exists('username',$_COOKIE)){
+    header('location: ../index.php');
+}
+else{
+    // echo "hello";
+}
+?>
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
