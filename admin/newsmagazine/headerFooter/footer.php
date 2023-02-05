@@ -15,6 +15,25 @@
 <!-- Custom Theme JavaScript -->
 <script src="../dist/js/sb-admin-2.js"></script>
 
+
+<!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+
+
+<script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+        $('#LoginForm').validate();
+    })
+</script> 
+
 </body>
 
 </html>
