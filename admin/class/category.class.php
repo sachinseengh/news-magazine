@@ -1,6 +1,6 @@
 <?php
 
-include('common.class.php');
+require_once('common.class.php');
 class Category extends Common
 {
     public $id,$name,$rank,$status,$created_by,$created_date,$modified_by,$modified_date;

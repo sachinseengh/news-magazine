@@ -21,6 +21,7 @@ if(isset($_POST['submit'])){
     if($result){
         $ErrMs=" ";
         $msg="Updated successfully with id".$result;
+        
     }else{
         $ErrMs="category Already taken";
         $msg="failed";

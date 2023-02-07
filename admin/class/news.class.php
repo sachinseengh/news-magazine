@@ -36,12 +36,22 @@ class News extends Common
     }
     public function edit(){
         $conn = mysqli_connect('localhost', 'root', '', 'news-magazine');
-        $sql = "update news set name='$this->name',
-                                    rank='$this->rank',
+    
+        $sql = "update news set title='$this->title',
+                                    short_detail='$this->short_detail',
+                                    detail='$this->detail',
+                                    image='$this->image',
+                                    featured='$this->featured',
+                                    breaking='$this->breaking',
+                                    slider_key='$this->slider_key',
                                     status='$this->status',
-                                    modified_by='$this->modified_by', 
-                                    modified_date='$this->modified_date'
-                                    where id='$this->id'";
+                                    created_by='$this->created_by',
+                                    created_date='$this->created_date',
+                                    modified_by='$this->modified_by',
+                                    modified_date='$this->modified_date',
+                                    category_id='$this->category_id',
+                                    where id='$this->id'  ";
+
         $conn->query($sql);
         if($conn->affected_rows == 1){
             return $this->id;
@@ -57,7 +67,7 @@ class News extends Common
        if($var){
         return "success";
        }else{
-        return "failed0";
+        return "failed";
        }
     }
 
